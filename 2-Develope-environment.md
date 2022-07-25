@@ -88,7 +88,3 @@ https://opensource.com/article/19/2/swap-space-poll
 https://ubuntu.com/tutorials/install-ubuntu-desktop
 
 https://github.com/nvm-sh/nvm
-
-https://cli.vuejs.org/guide/installation.html
-
-https://code.visualstudio.com/docs/setup/linux
