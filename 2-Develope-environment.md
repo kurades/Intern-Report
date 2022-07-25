@@ -9,19 +9,30 @@
 ### 1. Cách cài đặt Ubuntu
 1. Đầu tiên cần phải có cho mình 1 USB chứa file **.ISO** của hệ điều hành ubuntu ([file tải](https://ubuntu.com/download/desktop)).
 
-2. Chúng ta dùng [Rufus](https://rufus.ie/en/) để tạo bootable USB ![](https://rufus.ie/pics/rufus_en.png)
+2. Chúng ta dùng [Rufus](https://rufus.ie/en/) để tạo bootable USB 
+
+![](https://rufus.ie/pics/rufus_en.png)
 
 Để setting theo ảnh ngoại trừ phần **target system** chúng ta sẽ để **_UEFI_** và bấm <kbd>START</kbd>.
+
 3. Tiếp theo chúng ta cung cấp ổ đĩa cho ubuntu
+
 ![](https://phongvu.vn/cong-nghe/wp-content/uploads/2018/08/4-1.jpg)
+
 Tùy chỉnh dung lượng muốn cài đặt, tốt nhất trên 35GB. Lý do sẽ cung cấp ở bước tạo phân vùng
+
  ![](https://phongvu.vn/cong-nghe/wp-content/uploads/2018/08/5-1.jpg)
+ 
  Đây là phân vùng đã tạo để chứa ubuntu 
+ 
  ![step3](https://phongvu.vn/cong-nghe/wp-content/uploads/2018/08/6-1.jpg)
+ 
 4. Tiếp theo tắt fast startup ![](https://phongvu.vn/cong-nghe/wp-content/uploads/2018/08/9-1.jpg)
 5. Bây giờ cắm USB và khởi động lại máy nếu như không hiện cài đặt ở phía dưới chúng ta có thể bấm <kbd>f2</kbd> hoặc <kbd>f12</kbd> sau đó chọn tên của USB ![](https://phongvu.vn/cong-nghe/wp-content/uploads/2018/08/10-1.jpg)
 6. Chọn tiếp install ubuntu ![](https://phongvu.vn/cong-nghe/wp-content/uploads/2018/08/11-1.jpg)
+
 Bỏ qua một vài bước thiết lập, đến phần **QUAN TRỌNG** nhất
+
 7. Đến phần này chọn *Something else* ![](https://phongvu.vn/cong-nghe/wp-content/uploads/2018/08/15.jpg)
 8. Bấm vào phân vùng đã chia ở **Bước 3**, chúng ta sẽ chia phần vùng này thành 3 phần *root*, *swap* và *home* ![](https://phongvu.vn/cong-nghe/wp-content/uploads/2018/08/16.jpg)
 9. Tạo phân vùng swap như ảnh dưới và lưu ý kích thước của phân vùng này sẽ thay đổi tùy thuộc vào RAM của máy(vd: máy có RAM 8GB thì swap partition là 8192MB). Tham khảo bảng dưới:
