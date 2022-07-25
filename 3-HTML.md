@@ -23,3 +23,11 @@ Tag | Mô tả
 Thẻ article và thẻ section mô tả nội dung trong nó khá tương đồng, vậy sử dụng thế nào cho hợp lý?
 
 Câu trả lời là sử dụng thế nào cũng được, chúng ta có thể bọc thẻ `<article>` trong `<section>` hoặc ngược lại, hoặc có thể bọc thẻ `<article>` trong `<article>` hay `<section>` trong `<section>`.
+
+Reference :
+
+[Viblo](https://viblo.asia/p/bai-27-tim-hieu-chinh-xac-ve-semantic-element-trong-html5-07LKX2qDlV4)
+
+[webflow](https://webflow.com/blog/html5-semantic-elements-and-webflow-the-essential-guide#:~:text=Semantic%20elements'%20benefits%20for%20designers,to%20choose%20titles'%20hierarchy%20properly.)
+
+[w3schools](https://www.w3schools.com/html/html5_semantic_elements.asp)
