@@ -36,7 +36,8 @@ Bỏ qua một vài bước thiết lập, đến phần **QUAN TRỌNG** nhất
 
 ### 2. Cài đặt linh tinh lặt vặt
 1. nodejs sử dụng nvm
-Để cài đặt nvm chúng ta cần tải **Install script** và chạy nó bằng lệnh:
+
+  Để cài đặt nvm chúng ta cần tải **Install script** và chạy nó bằng lệnh:
     ```sh
     wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
     ```
