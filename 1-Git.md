@@ -1,4 +1,4 @@
-# Tổng quan Gitflow
+﻿# Tổng quan Gitflow
 Gitflow là một quy trình làm việc phân nhánh được sử dụng trong các dự án lớn.
 
 Gitflow cơ bản sẽ chia các nhánh làm việc riêng theo mục đích cụ thể ví dụ như :
