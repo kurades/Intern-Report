@@ -2,13 +2,13 @@
 
 ## Bài rất dài nên sẽ có Table of content
 
-- [Kiểu dữ liệu](#1-kiểu-dữ-liệu-trong-js)
+- [Kiểu dữ liệu](#kiểu-dữ-liệu-trong-js)
   1. [Number](#1-number)
   2. [String](#2-string)
   3. [Boolean](#3-boolean)
   4. [undefined và null](#4-null-và-undefined)
   5. [Object](#5-object)
-- [Vòng lặp và switch case](#ii-vòng-lặp)
+- [Vòng lặp và switch case](#vòng-lặp)
   1. [Vòng lặp](#vòng-lặp-while)
   2. [switch case](#lệnh-switch)
 - [If else](#if-else)
@@ -18,7 +18,7 @@
   2. [AND](#and)
   3. [NOT](#not)
   4. [??](#kiểm-tra-tồn-tại-giá-trị)
-- [Xử lý lỗi](#xử-lý-lỗi)
+- [Xử lý lỗi](#xử-lý-lỗi-bằng-trycatch)
 - [Object advance](#object)
 - [Async](#asynchronous)
   1. [callback](#callback)
