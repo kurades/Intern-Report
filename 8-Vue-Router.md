@@ -1,8 +1,10 @@
 # Vue Router
 ## ToC
-- [Cài đặt Vue Router vào dự án]()
-- [Tạo các Route]()
-- [Lazy load route]()
+- [Cài đặt Vue Router vào dự án](#cài-đặt-vue-router)
+- [Tạo các Route](#tạo-các-route)
+- [Lazy load route](#lazy-load)
+- [Dynamic route](#dynamic-route-param)
+- [Bắt route không tồn tại](#bắt-một-route-không-tồn-tại-từ-thanh-địa-chỉ)
 ---
 ## Cài đặt Vue Router
 Tải package vue router
