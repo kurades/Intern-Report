@@ -15,6 +15,10 @@
       - [Dispatch actions trong component](#dispatch-actions-trong-component)
     - [Modules](#modules)
       - [Module Local State](#module-local-state)
+      - [Namespace](#namespace)
+      - [Truy cập vào các giá trị toàn cục trong một namespaced module](#truy-cập-vào-các-giá-trị-toàn-cục-trong-một-namespaced-module)
+      - [Khai báo `Action` toàn cục trong một namespaced module](#khai-báo-action-toàn-cục-trong-một-namespaced-module)
+    - [Khung của một dự án Vuex cơ bản](#khung-của-một-dự-án-vuex-cơ-bản)
 ---
 ## Vuex là gì
 Vuex là một pattern và là thư viện quản lý state dành cho Vue. Nó được xem như là một nơi lưu trữ tập trung dành cho các component trong ứng dụng.
@@ -389,4 +393,129 @@ const moduleA = {
     }
   }
 }
+```
+#### Namespace
+Mặc định, các `actions` và `mutations` sẽ được gán dưới dạng biến toàn cục, nó cho phép nhiều module có thể phản ứng với loại action/mutation, `Getters` cũng vậy. Nhưng bạn cần phải cẩn thận với việc đặt tên cho 2 getter giống nhau ở một non-namespaced module bởi vì nó có thể dẫn đến lỗi.
+
+Để giúp cho module có thể tách biệt hoặc tái sử dụng, chúng ta có thể sử dụng `namespaced : true`.
+```javascript
+const store = createStore({
+  modules: {
+    account: {
+      namespaced: true,
+
+      // module assets
+      state: () => ({ ... }), // module state is already nested and not affected by namespace option
+      getters: {
+        isAdmin () { ... } // -> getters['account/isAdmin']
+      },
+      actions: {
+        login () { ... } // -> dispatch('account/login')
+      },
+      mutations: {
+        login () { ... } // -> commit('account/login')
+      },
+
+      // nested modules
+      modules: {
+        // inherits the namespace from parent module
+        myPage: {
+          state: () => ({ ... }),
+          getters: {
+            profile () { ... } // -> getters['account/profile']
+          }
+        },
+
+        // further nest the namespace
+        posts: {
+          namespaced: true,
+
+          state: () => ({ ... }),
+          getters: {
+            popular () { ... } // -> getters['account/posts/popular']
+          }
+        }
+      }
+    }
+  }
+})
+```
+#### Truy cập vào các giá trị toàn cục trong một namespaced module
+Nếu muốn sử dụng state và getter toàn cục, `rootState` và `rootGetters` được truyền vào như tham số thứ 3 và thứ 4 trong hàm getter, và cũng có mặt trong object `context` ở hàm `action`.
+
+Để có thể sử dụng các biến toàn cục đó, ta dùng `{root : true}` như tham số thứ 3 của `dispatch` và `commit`.
+```javascript
+modules: {
+  foo: {
+    namespaced: true,
+
+    getters: {
+      // `getters` is localized to this module's getters
+      // you can use rootGetters via 4th argument of getters
+      someGetter (state, getters, rootState, rootGetters) {
+        getters.someOtherGetter // -> 'foo/someOtherGetter'
+        rootGetters.someOtherGetter // -> 'someOtherGetter'
+        rootGetters['bar/someOtherGetter'] // -> 'bar/someOtherGetter'
+      },
+      someOtherGetter: state => { ... }
+    },
+
+    actions: {
+      // dispatch and commit are also localized for this module
+      // they will accept `root` option for the root dispatch/commit
+      someAction ({ dispatch, commit, getters, rootGetters }) {
+        getters.someGetter // -> 'foo/someGetter'
+        rootGetters.someGetter // -> 'someGetter'
+        rootGetters['bar/someGetter'] // -> 'bar/someGetter'
+
+        dispatch('someOtherAction') // -> 'foo/someOtherAction'
+        dispatch('someOtherAction', null, { root: true }) // -> 'someOtherAction'
+
+        commit('someMutation') // -> 'foo/someMutation'
+        commit('someMutation', null, { root: true }) // -> 'someMutation'
+      },
+      someOtherAction (ctx, payload) { ... }
+    }
+  }
+}
+```
+#### Khai báo `Action` toàn cục trong một namespaced module
+Nếu muốn khai báo `action` toàn cục trong namespaced module, ta có thể đánh dấu nó với `{root:true}` và định nghĩa hàm xử lý trong hàm `handler`:
+```javascript
+{
+  actions: {
+    someOtherAction ({dispatch}) {
+      dispatch('someAction')
+    }
+  },
+  modules: {
+    foo: {
+      namespaced: true,
+
+      actions: {
+        someAction: {
+          root: true,
+          handler (namespacedContext, payload) { ... } // -> 'someAction'
+        }
+      }
+    }
+  }
+}
+```
+### Khung của một dự án Vuex cơ bản
+```sh
+├── index.html
+├── main.js
+├── api
+│   └── ... # abstractions for making API requests
+├── components
+│   ├── App.vue
+│   └── ...
+└── store
+    ├── index.js          # where we assemble modules and export the store
+    ├── actions.js        # root actions
+    ├── mutations.js      # root mutations
+    └── modules
+        ├── cart.js       # cart module
+        └── products.js   # products module
 ```
